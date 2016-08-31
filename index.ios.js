@@ -1,18 +1,19 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+'use strict';
 
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  NativeModules
 } from 'react-native';
 
 class ReactNative4Days extends Component {
+  componentDidMount () {
+    NativeModules.JTSImagePreview.showImage('http://wallpaperhd4k.com/wp-content/uploads/2015/10/Ferrari-and-Girl-1920x1200-005.jpg')
+  }
+
   render() {
     return (
       <View style={styles.container}>

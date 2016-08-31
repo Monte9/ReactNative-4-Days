@@ -29,12 +29,16 @@ You will need Xcode, node.js, the React Native command line tools, and Watchman.
     - `atom Podfile` (or use any other text editor of your choice)
     - add `pod 'JTSImageViewController'`
 4. Install pod: `pod install`
+5. Link Binaries:
+    - Click on the `ReactNative4Days.xcodeproj` on the left and select the `ReactNative4Days` target
+    - Go the `Build Phases` tab and search for `Link Binary with Libraries`
+    - Here add the .a file of the cocoapod you just added which is: `libJTSImageViewController.a`
 
 ## Compile error react-native >=0.26.0
 
 If you are using a `react-native` version `>=0.26.0`, you might encounter the following error while trying to run the project
 
-```"std::terminate()", referenced from:
+``` "std::terminate()", referenced from:
         ___clang_call_terminate in libReact.a(RCTJSCExecutor.o)```
 
 React Native introduced some C++ code so we need to tell **Xcode** to include use those symbols for compile. First click **ReactNative4Days.xcodeproj** in the Project Navigator to show your project's target (at least one for your app). Then for each of the targets do the following:

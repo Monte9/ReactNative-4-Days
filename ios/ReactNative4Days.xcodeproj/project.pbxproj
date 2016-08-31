@@ -25,6 +25,9 @@
 		6FE3ED2669C2AF366991C620 /* libPods-ReactNative4DaysTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80CB1740658989E4BEC89F24 /* libPods-ReactNative4DaysTests.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8FCE699052CE99A8EE3E2976 /* libPods-ReactNative4Days.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47D4B6E0FA248D664E1C4935 /* libPods-ReactNative4Days.a */; };
+		EC3093B81D76D25D005866E3 /* libJTSImageViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3093B71D76D25D005866E3 /* libJTSImageViewController.a */; };
+		EC3093B91D76D267005866E3 /* libJTSImageViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EC3093B71D76D25D005866E3 /* libJTSImageViewController.a */; };
+		EC3093BC1D76D469005866E3 /* JTSImagePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3093BB1D76D469005866E3 /* JTSImagePreview.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +138,9 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		BA68CC25FC7E508B66935D40 /* Pods-ReactNative4Days.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNative4Days.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReactNative4Days/Pods-ReactNative4Days.debug.xcconfig"; sourceTree = "<group>"; };
 		CFA204A97E7BF41057C67A0D /* Pods-ReactNative4DaysTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNative4DaysTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReactNative4DaysTests/Pods-ReactNative4DaysTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EC3093B71D76D25D005866E3 /* libJTSImageViewController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJTSImageViewController.a; path = "../../../../Library/Developer/Xcode/DerivedData/ReactNative4Days-cqodfvlpvqklxweywtpcuoqnucyt/Build/Products/Debug-iphonesimulator/JTSImageViewController/libJTSImageViewController.a"; sourceTree = "<group>"; };
+		EC3093BA1D76D469005866E3 /* JTSImagePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JTSImagePreview.h; path = ReactNative4Days/JTSImagePreview.h; sourceTree = "<group>"; };
+		EC3093BB1D76D469005866E3 /* JTSImagePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JTSImagePreview.m; path = ReactNative4Days/JTSImagePreview.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC3093B91D76D267005866E3 /* libJTSImageViewController.a in Frameworks */,
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
 				6FE3ED2669C2AF366991C620 /* libPods-ReactNative4DaysTests.a in Frameworks */,
 			);
@@ -151,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC3093B81D76D25D005866E3 /* libJTSImageViewController.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
@@ -247,6 +255,8 @@
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				EC3093BA1D76D469005866E3 /* JTSImagePreview.h */,
+				EC3093BB1D76D469005866E3 /* JTSImagePreview.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
@@ -333,6 +343,7 @@
 		EA8B09B929A52AA9E7FC9C30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EC3093B71D76D25D005866E3 /* libJTSImageViewController.a */,
 				47D4B6E0FA248D664E1C4935 /* libPods-ReactNative4Days.a */,
 				80CB1740658989E4BEC89F24 /* libPods-ReactNative4DaysTests.a */,
 			);
@@ -674,6 +685,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				EC3093BC1D76D469005866E3 /* JTSImagePreview.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
