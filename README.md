@@ -10,8 +10,10 @@ You will need Xcode, node.js, the React Native command line tools, and Watchman.
 
 1. Xcode: Get Xcode from the [App Store here](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
 2. node.js:
-- If you're using OS X or Windows, the best way to install Node.js is to use one of the installers from the Node.js [download page here](https://nodejs.org/en/download/). [Read more..](https://docs.npmjs.com/getting-started/installing-node)
--Or install npm via homebrew like so: `brew install node`
+
+    - If you're using OS X or Windows, the best way to install Node.js is to use one of the installers from the Node.js [download page here](https://nodejs.org/en/download/).
+    - Or install npm via homebrew like so: `brew install node`
+
 3. React Native command line tool: `npm install -g react-native-cli`
 4. Watchman: `brew install watchman`
 5. Finally create a new React Native app: `react-native init ReactNative4Days`
@@ -24,7 +26,7 @@ React Native 4 Days is under the MIT license.
 
 # Contact me
 
-Twitter: @Mthakkar_
+Twitter: [@Mthakkar_](https://twitter.com/MThakkar_)
 
 Website: http://montethakkar.com/
 
