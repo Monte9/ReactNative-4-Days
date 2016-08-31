@@ -6,29 +6,55 @@ import {
   StyleSheet,
   Text,
   View,
-  NativeModules
+  Image,
+  NativeModules,
+  TouchableHighlight
 } from 'react-native';
 
-class ReactNative4Days extends Component {
-  componentDidMount () {
-    NativeModules.JTSImagePreview.showImage('http://wallpaperhd4k.com/wp-content/uploads/2015/10/Ferrari-and-Girl-1920x1200-005.jpg')
+class ReactNative4Days extends Component{
+  _viewImage() {
+    NativeModules.JTSImagePreview.showImage('http://wallpaperhd4k.com/wp-content/uploads/2015/10/Ferrari-and-Girl-1920x1200-005.jpg');
   }
 
   render() {
-    return (
+    return(
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <TouchableHighlight onPress={()=>this._viewImage()}>
+          <Text style={styles.welcome}>
+            Click here to view image!
+          </Text>
+        </TouchableHighlight>
       </View>
-    );
+    )
+  }
+}
+
+export default class extends Component{
+  constructor() {
+    super();
+    this.state = {
+      show:false
+    };
+  }
+
+  _onImgPress() {
+    this.setState({
+      show:false
+    })
+    this.setState({
+      show:true
+    })
+  }
+
+  render() {
+    return(
+      <View style={{marginTop:100, alignItems:"center"}}>
+        <TouchableHighlight onPress={()=>this._onImgPress()}>
+          <Image source={{uri:'http://wallpaperhd4k.com/wp-content/uploads/2015/10/Ferrari-and-Girl-1920x1200-005.jpg'}} style={styles.img}></Image>
+        </TouchableHighlight>
+        {this.state.show?<ShowImg></ShowImg>:<View></View>}
+      </View>
+    )
   }
 }
 
@@ -44,10 +70,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  img:{
+    height: 200,
+    width: 300
   },
 });
 
