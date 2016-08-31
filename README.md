@@ -20,6 +20,32 @@ You will need Xcode, node.js, the React Native command line tools, and Watchman.
 
 [Refer to the React Native Getting Started documentation for more information](https://facebook.github.io/react-native/docs/getting-started.html)
 
+# Using CocoaPods
+1. Install CocoaPods: `gem install cocoapods`
+2. Init the pod file:
+    - `cd ios` (move into the ios directory within ReactNative4Days folder)
+    - `pod init`
+3. Add pod to the file:
+    - `atom Podfile` (or use any other text editor of your choice)
+    - add `pod 'JTSImageViewController'`
+4. Install pod: `pod install`
+
+## Compile error react-native >=0.26.0
+
+If you are using a `react-native` version `>=0.26.0`, you might encounter the following error while trying to run the project
+
+```"std::terminate()", referenced from:
+        ___clang_call_terminate in libReact.a(RCTJSCExecutor.o)```
+
+React Native introduced some C++ code so we need to tell **Xcode** to include use those symbols for compile. First click **ReactNative4Days.xcodeproj** in the Project Navigator to show your project's target (at least one for your app). Then for each of the targets do the following:
+
+    - Go the `Build Settings` tab, and make sure `All` is toggled on (instead of `Basic` or `Combined`)
+    - Look for `Other Linker Flags` and add the flag `-lc++` for all configurations
+
+*If your project was created using react-native init command, you will have two targets (app & tests) so make sure BOTH of them has the correct flags*
+
+([credit](https://github.com/auth0/react-native-lock#compile-error-react-native-0260))
+
 # License
 
 React Native 4 Days is under the MIT license.
