@@ -8,23 +8,47 @@ import {
   View,
   Image,
   NativeModules,
-  TouchableHighlight
+  TouchableHighlight,
+  Navigator,
+  Platform
 } from 'react-native';
 
 class ReactNative4Days extends Component{
   _viewImage() {
-    NativeModules.JTSImagePreview.showImage('http://wallpaperhd4k.com/wp-content/uploads/2015/10/Ferrari-and-Girl-1920x1200-005.jpg');
+    if(Platform.OS === 'ios') {
+      NativeModules.JTSImagePreview.showImage('http://wallpaperhd4k.com/wp-content/uploads/2015/10/Ferrari-and-Girl-1920x1200-005.jpg');
+    } else {
+      return <View>This module is only available on iOS</View>
+    }
   }
 
   render() {
     return(
-      <View style={styles.container}>
-        <TouchableHighlight onPress={()=>this._viewImage()}>
-          <Text style={styles.welcome}>
-            Click here to view image!
-          </Text>
-        </TouchableHighlight>
-      </View>
+      <Navigator
+        initialRoute={{ title: 'Awesome Scene', index: 0 }}
+        renderScene={(route, navigator) =>
+          <View style={styles.container}>
+            <TouchableHighlight onPress={()=>this._viewImage()} underlayColor='white'>
+              <Text style={styles.welcome}>
+                Click here to view image! (iOS Only)
+              </Text>
+            </TouchableHighlight>
+          </View>
+        }
+        navigationBar={
+           <Navigator.NavigationBar
+             routeMapper={{
+               LeftButton: (route, navigator, index, navState) =>
+                { return (<Text style={{padding: 15}}>Cancel </Text>); },
+               RightButton: (route, navigator, index, navState) =>
+                 { return (<Text style={{padding: 15}}>Done </Text>); },
+               Title: (route, navigator, index, navState) =>
+                 { return (<Text style={{padding: 10, fontSize: 17}}>Awesome Nav Bar </Text>); },
+             }}
+             style={{backgroundColor: 'grey'}}
+           />
+        }
+      />
     )
   }
 }
@@ -63,7 +87,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'white',
   },
   welcome: {
     fontSize: 20,

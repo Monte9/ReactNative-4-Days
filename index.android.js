@@ -1,33 +1,84 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+'use strict';
 
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Image,
+  NativeModules,
+  TouchableHighlight,
+  Navigator,
+  Platform
 } from 'react-native';
 
-class ReactNative4Days extends Component {
+class ReactNative4Days extends Component{
+  _viewImage() {
+    if(Platform.OS === 'ios') {
+      NativeModules.JTSImagePreview.showImage('http://wallpaperhd4k.com/wp-content/uploads/2015/10/Ferrari-and-Girl-1920x1200-005.jpg');
+    } else {
+      return <View>This module is only available on iOS</View>
+    }
+  }
+
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+    return(
+      <Navigator
+        initialRoute={{ title: 'Awesome Scene', index: 0 }}
+        renderScene={(route, navigator) =>
+          <View style={styles.container}>
+            <TouchableHighlight onPress={()=>this._viewImage()} underlayColor='white'>
+              <Text style={styles.welcome}>
+                Click here to view image! (iOS Only)
+              </Text>
+            </TouchableHighlight>
+          </View>
+        }
+        navigationBar={
+           <Navigator.NavigationBar
+             routeMapper={{
+               LeftButton: (route, navigator, index, navState) =>
+                { return (<Text style={{padding: 15}}>Cancel </Text>); },
+               RightButton: (route, navigator, index, navState) =>
+                 { return (<Text style={{padding: 15}}>Done </Text>); },
+               Title: (route, navigator, index, navState) =>
+                 { return (<Text style={{padding: 10, fontSize: 17}}>Awesome Nav Bar </Text>); },
+             }}
+             style={{backgroundColor: 'grey'}}
+           />
+        }
+      />
+    )
+  }
+}
+
+export default class extends Component{
+  constructor() {
+    super();
+    this.state = {
+      show:false
+    };
+  }
+
+  _onImgPress() {
+    this.setState({
+      show:false
+    })
+    this.setState({
+      show:true
+    })
+  }
+
+  render() {
+    return(
+      <View style={{marginTop:100, alignItems:"center"}}>
+        <TouchableHighlight onPress={()=>this._onImgPress()}>
+          <Image source={{uri:'http://wallpaperhd4k.com/wp-content/uploads/2015/10/Ferrari-and-Girl-1920x1200-005.jpg'}} style={styles.img}></Image>
+        </TouchableHighlight>
+        {this.state.show?<ShowImg></ShowImg>:<View></View>}
       </View>
-    );
+    )
   }
 }
 
@@ -36,17 +87,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'white',
   },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  img:{
+    height: 200,
+    width: 300
   },
 });
 
